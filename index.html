@@ -4,66 +4,179 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Romac</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="loader">Loading Romac portfolio...</div>
+    <div class="loader">
+      <div class="spinner"></div>
+      <div>Loading Romac's awesome portfolio...</div>
+    </div>
+
     <div class="container">
-      <h1>About Me!</h1>
-      <img
-        src="./images/ma_pic.jpeg"
-        alt="romac-pic"
-        class="profile-img"
-        style="width: 200px; height: 200px"
-      />
+      <h1>About Me! 🚀</h1>
+
+      <img src="./images/ma_pic.jpeg" alt="romac-pic" class="profile-img" />
 
       <div class="section">
-        <p>
-          Hi, my name is <strong><i class="highlight">Romac</i></strong
-          >, a student at Sai Pali institute and I am a passionate software
-          developer with a passion for creating innovative solutions. I
-          specialize in web development handling both frontend and backend and
-          have experience working with various programming languages and
+        <h3>
+          <i class="fas fa-user section-icon"></i>
+          Introduction
+        </h3>
+        <p style="font-size: 1.1em; text-align: justify">
+          Hi, my name is <strong><span class="highlight">Romac</span></strong
+          >, a passionate student at Sai Pali Institute! I am a dedicated
+          software developer with a genuine passion for creating innovative
+          solutions that make a difference. I specialize in
+          web&nbsp;development, handling both frontend and backend technologies,
+          and have experience working with various programming languages and
           frameworks.
         </p>
-      </div> 
+      </div>
 
       <div
-        style="display: flex; flex-wrap: wrap; justify-content: space-between"
+        class="flex-container"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 20px;
+        "
       >
         <div class="section" style="flex-basis: 45%">
-          <h3>Tech Stacks</h3>
-          <ul>
-            <li>HTML&nbsp;5</li>
-            <li>CSS&nbsp;3</li>
-            <li>JavaScript</li>
-          </ul>
+          <h3>
+            <i class="fas fa-code section-icon"></i>
+            Tech Stacks
+          </h3>
+          <div>
+            <span class="tech-item">HTML&nbsp;5</span>
+            <span class="tech-item">CSS&nbsp;3</span>
+            <span class="tech-item">JavaScript</span>
+          </div>
         </div>
 
         <div class="section" style="flex-basis: 45%">
-          <h3>My Hobbies</h3>
-          <ul>
-            <li>Chess</li>
-            <li>Music</li>
-            <li>Reading novels</li>
-            <li>Exploration</li>
-          </ul>
+          <h3>
+            <i class="fas fa-heart section-icon"></i>
+            My Hobbies
+          </h3>
+          <div>
+            <div class="hobby-item">
+              <i class="fas fa-chess"></i>
+              <span>Chess</span>
+            </div>
+            <div class="hobby-item">
+              <i class="fas fa-music"></i>
+              <span>Music</span>
+            </div>
+            <div class="hobby-item">
+              <i class="fas fa-book"></i>
+              <span>Reading novels</span>
+            </div>
+            <div class="hobby-item">
+              <i class="fas fa-compass"></i>
+              <span>Exploration</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="contact">
-        <h3>Contact Me</h3>
-        <p>Phone: 0706092981</p>
-        <p>Instagram: www.instagram.com/romac</p>
-        <p>LinkedIn: www.linkedin.com</p>
-        <p>GitHub: https://github.com/David-Romak</p>
+        <h3><i class="fas fa-envelope"></i> Let's Connect!</h3>
+        <div>
+          <a href="tel:52535289" class="contact-item">
+            <i class="fas fa-phone"></i>
+            070609291
+          </a>
+          <a
+            href="https://www.instagram.com/romac"
+            target="_blank"
+            class="contact-item"
+          >
+            <i class="fab fa-instagram"></i>
+            Instagram
+          </a>
+          <a
+            href="https://www.linkedin.com/romac"
+            target="_blank"
+            class="contact-item"
+          >
+            <i class="fab fa-linkedin"></i>
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/David-Romak"
+            target="_blank"
+            class="contact-item"
+          >
+            <i class="fab fa-github"></i>
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
 
     <script>
+      let progress = 0;
+      const loader = document.querySelector(".loader");
+      const loaderText = loader.querySelector("div:last-child");
+
+      const loadingMessages = [
+        "Loading Romac's awesome portfolio...",
+        "Preparing amazing content...",
+        "Almost ready...",
+        "Welcome!",
+      ];
+
+      let messageIndex = 0;
+      const messageInterval = setInterval(() => {
+        if (messageIndex < loadingMessages.length - 1) {
+          messageIndex++;
+          loaderText.textContent = loadingMessages[messageIndex];
+        }
+      }, 750);
+
       setTimeout(function () {
-        document.querySelector(".loader").style.display = "none";
+        clearInterval(messageInterval);
+        loader.style.opacity = "0";
+        loader.style.transition = "opacity 0.5s ease";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+          // trigger entrance animations
+          document.querySelector(".container").style.opacity = "1";
+        }, 500);
       }, 3000);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const techItems = document.querySelectorAll(".tech-item");
+        techItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            this.style.animation = "bounceIn 0.6s ease";
+            setTimeout(() => {
+              this.style.animation = "";
+            }, 600);
+          });
+        });
+
+        const nameElement = document.querySelector(".highlight");
+        const originalText = nameElement.textContent;
+        nameElement.textContent = "";
+
+        setTimeout(() => {
+          let i = 0;
+          const typeInterval = setInterval(() => {
+            nameElement.textContent += originalText[i];
+            i++;
+            if (i === originalText.length) {
+              clearInterval(typeInterval);
+            }
+          }, 150);
+        }, 3500);
+      });
     </script>
   </body>
 </html>
