@@ -1,11 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Romac</title>
-</head>
-<body>
-    <h1>About Me Page!</h1>
-</body>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="loader">Loading Romac portfolio...</div>
+    <div class="container">
+      <h1>About Me!</h1>
+      <img
+        src="./images/ma_pic.jpeg"
+        alt="romac-pic"
+        class="profile-img"
+        style="width: 200px; height: 200px"
+      />
+
+      <div class="section">
+        <p>
+          Hi, my name is <strong><i class="highlight">Romac</i></strong
+          >, a student at Sai Pali institute and I am a passionate software
+          developer with a passion for creating innovative solutions. I
+          specialize in web development handling both frontend and backend and
+          have experience working with various programming languages and
+          frameworks.
+        </p>
+      </div> 
+
+      <div
+        style="display: flex; flex-wrap: wrap; justify-content: space-between"
+      >
+        <div class="section" style="flex-basis: 45%">
+          <h3>Tech Stacks</h3>
+          <ul>
+            <li>HTML&nbsp;5</li>
+            <li>CSS&nbsp;3</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+
+        <div class="section" style="flex-basis: 45%">
+          <h3>My Hobbies</h3>
+          <ul>
+            <li>Chess</li>
+            <li>Music</li>
+            <li>Reading novels</li>
+            <li>Exploration</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h3>Contact Me</h3>
+        <p>Phone: 52535289</p>
+        <p>Instagram: www.instagram.com/romac</p>
+        <p>LinkedIn: www.linkedin.com</p>
+        <p>GitHub: https://github.com/David-Romak</p>
+      </div>
+    </div>
+
+    <script>
+      setTimeout(function () {
+        document.querySelector(".loader").style.display = "none";
+      }, 3000);
+    </script>
+  </body>
 </html>
